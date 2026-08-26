@@ -1,7 +1,7 @@
 name: Sync Blogger Posts
 on:
   schedule:
-    - cron: '34 0 * * 0'
+    - cron: '34 */3 * * *'
   workflow_dispatch:
 
 jobs:
@@ -15,7 +15,21 @@ jobs:
       - name: Fetch RSS Feed
         uses: gautamkrishnar/blog-post-workflow@master
         with:
-          feed_list: "https://alsunnahalislam.blogspot.com/atom.xml?redirect=false&start-index=1&max-results=9999"
+          feed_list: "https://blogspot.com"
           readme_path: "index.html"
-          max_post_count: 60
-          template: "<li><a href='$url'>$title</a></li>"
+          max_post_count: 10
+          # This custom mapping formats posts into identical Blogger grid card frames
+          template: |
+            <div class="post-outer">
+              <div class="post hentry">
+                <h3 class="post-title entry-title">
+                  <a href="$url">$title</a>
+                </h3>
+                <div class="post-body entry-content">
+                  <div class="home-snippet">$description</div>
+                  <div style="text-align:center">
+                    <a class="read-more" href="$url">Read more ...</a>
+                  </div>
+                </div>
+              </div>
+            </div>
