@@ -18,4 +18,4 @@ jobs:
           feed_list: "https://blogspot.com"
           readme_path: "index.html"
           max_post_count: 10
-          template: "<li><a href='$url'>$title</a> <span style='color:gray;'>($date)</span></li>"
+         
