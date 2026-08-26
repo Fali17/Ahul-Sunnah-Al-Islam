@@ -1,24 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahlu-Sunnah Al Islam</title>
-    <style>
-        body { font-family: -apple-system, sans-serif; line-height: 1.6; max-width: 600px; margin: 40px auto; padding: 0 20px; color: #333; }
-        h1 { border-bottom: 2px solid #eee; padding-bottom: 10px; color: #111; }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 12px; }
-        a { color: #0066cc; text-decoration: none; font-weight: 500; }
-        a:hover { text-decoration: underline; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ahlu-Sunnah Al Islam - GitHub Mirror</title>
+  
+  <!-- Matching fonts from your Blogger source template -->
+  <link href="https://googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://gstatic.com" rel="preconnect"/>
+  <link href="https://googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    /* Exact color variables matching your b:skin template config */
+    :root {
+      --g900: #0d2818;
+      --g700: #145a32;
+      --g600: #1a6e3b;
+      --g500: #1e8449;
+      --g100: #d5f5e3;
+      --g50: #eafaf1;
+      --g25: #f6fcf7;
+      --gold: #c8a951;
+      --text: #1b2e1f;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--g25); color: var(--text); font-family: 'Tajawal', sans-serif; font-size: 17px; line-height: 1.8; }
+    a { color: var(--g700); font-weight: 600; text-decoration: none; }
+    
+    /* Top reading indicator bar */
+    #readProgress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--g700), var(--gold)); width: 0%; z-index: 9999; }
+
+    #outer-wrapper { background: #fff; width: 95%; max-width: 1150px; margin: 24px auto; border-radius: 18px; border: 1px solid var(--g100); overflow: hidden; box-shadow: 0 4px 18px rgba(20,90,50,0.06); }
+    
+    /* Header layout match */
+    #header-wrapper { background: linear-gradient(180deg, var(--g700), var(--g600)); color: #fff; text-align: center; padding: 35px 20px; border-bottom: 4px solid var(--gold); display: flex; flex-direction: column; justify-content: center; align-items: center; }
+    #header-wrapper h1 { font-family: 'Amiri', serif; font-size: 38px; color: #fff; margin-bottom: 5px; }
+    #header-wrapper p { color: #d5f5e3; font-size: 15px; }
+
+    /* Static navigation mock bar */
+    #header-navigation { background: #fff; border-bottom: 1px solid var(--g100); text-align: center; }
+    #header-navigation ul { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; gap: 6px; padding: 10px; margin: 0 auto; }
+    #header-navigation li { font-family: 'Amiri', serif; font-weight: 700; font-size: 18px; }
+    #header-navigation li a { color: var(--g900); padding: 10px 18px; border-radius: 30px; display: block; transition: all 0.2s; }
+    #header-navigation li a:hover { background: var(--g700); color: #fff; }
+
+    #content-wrapper { padding: 22px; display: flex; gap: 22px; }
+    #main-wrapper { width: 100%; }
+
+    /* Target lists matching your unique 5px screenshot frame definition */
+    .blog-posts { display: flex; flex-direction: column; gap: 20px; width: 100%; list-style: none; }
+    
+    /* Injection mapping list formatting */
+    .blog-posts li { 
+      background: #ffffff; 
+      border: 5px solid var(--g700); 
+      border-radius: 14px; 
+      padding: 22px 24px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 18px rgba(20,90,50,0.08);
+      font-size: 20px;
+      font-family: 'Amiri', serif;
+    }
+    .blog-posts li a { color: var(--g700) !important; font-size: 22px; font-weight: bold; display: block; margin-bottom: 4px; }
+    .blog-posts li a:hover { text-decoration: underline; }
+    
+    /* Footer layout match */
+    #footer-wrapper { background: var(--g700); color: #cfe9d6; padding: 25px; text-align: center; font-size: 14px; border-top: 1px solid rgba(255,255,255,0.1); }
+    #footer-wrapper strong { color: #fff; }
+
+    /* Responsive grid sizing for mobile adjustments */
+    @media screen and (max-width: 768px) {
+      #outer-wrapper { width: 98%; margin: 10px auto; border-radius: 10px; }
+      #header-wrapper h1 { font-size: 28px; }
+      #header-navigation ul { flex-direction: column; gap: 2px; }
+      #content-wrapper { padding: 12px; }
+      .blog-posts li { padding: 16px; font-size: 18px; }
+      .blog-posts li a { font-size: 19px; }
+    }
+  </style>
 </head>
 <body>
 
-    <h1>Ahlu-Sunnah Al Islam</h1>
-    <p>Latest authentic knowledge articles mirrored directly from Blogger:</p>
+<div id="readProgress"></div>
 
-    <!-- BLOG-POST-LIST:START --><li><a href='https://alsunnahalislam.blogspot.com/2026/08/the-story-of-musa-and-al-khidr-limits.html'>The Story of Mūsā AS and al-Khiḍr</a> <span style='color:gray;'>(Mon Aug 10 2026 11:56 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2026/05/anti-ibn-taymiyyah-scans.html'>Anti ibn Taymiyyah scans</a> <span style='color:gray;'>(Tue May 19 2026 3:12 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2026/03/regarding-murshids.html'>Regarding Murshids</a> <span style='color:gray;'>(Wed Mar 18 2026 10:41 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2026/03/quran-1648-and-modern-science.html'>Qur’an 16:48 and Modern Science</a> <span style='color:gray;'>(Sun Mar 15 2026 10:11 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2026/03/explanation-of-free-will.html'>Explanation of free will</a> <span style='color:gray;'>(Sat Mar 07 2026 12:22 AM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2026/02/refutation-of-shia-belief.html'>Refutation of Shia Belief</a> <span style='color:gray;'>(Wed Feb 25 2026 9:28 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2025/12/question-and-answer-regarding-something.html'>Question and answer regarding something</a> <span style='color:gray;'>(Thu Dec 04 2025 10:04 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2025/12/importance-of-murshid.html'>Importance of murshid</a> <span style='color:gray;'>(Thu Dec 04 2025 10:01 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2025/12/people-who-dont-have-murshid.html'>People who don&#39;t have murshid</a> <span style='color:gray;'>(Thu Dec 04 2025 9:52 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2025/12/sultan-al-hind.html'>Sultan Al Hind</a> <span style='color:gray;'>(Mon Dec 01 2025 7:10 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2025/10/explaining-slave-girl-hadith.html'>Explaining the slave girl hadith</a> <span style='color:gray;'>(Wed Oct 15 2025 12:35 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2025/10/regarding-hadith-that-isa-as-will-go-to.html'>Regarding the hadith that Isa AS will go to the grave of Prophet Muhammad ﷺ</a> <span style='color:gray;'>(Sat Oct 11 2025 9:32 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2025/10/dont-mention-prophet-by-his-name-alone.html'>Don&#39;t mention Prophet ﷺ by his name alone.</a> <span style='color:gray;'>(Fri Oct 10 2025 11:29 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2025/10/the-definition-of-fitrah-is-fitrah-islam.html'>The Definition of Fiṭrah. Is Fiṭrah Islam?</a> <span style='color:gray;'>(Thu Oct 02 2025 11:52 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2025/08/tawassulistighatha-evidences_24.html'>Tawassul/Istighatha evidences</a> <span style='color:gray;'>(Sun Aug 24 2025 8:51 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2025/08/saying-of-imam-abu-shama.html'>Saying of Imam Abu Shama</a> <span style='color:gray;'>(Sun Aug 24 2025 11:28 AM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2025/08/saying-of-ibn-abidinrh.html'>Saying of Ibn Abidin&lpar;rh&rpar;</a> <span style='color:gray;'>(Sat Aug 23 2025 9:36 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2025/08/fadail-sayyidat-al-nisa-al-alamin.html'>Fadail Sayyidat Al Nisa Al Alamin Fatima Zahra &lpar;SA&rpar;</a> <span style='color:gray;'>(Fri Aug 15 2025 3:16 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2025/08/ilam-al-muwaqqiin-rabb-al-alamin-311.html'>Iʿlām al-muwaqqiʿīn ʿan rabb al-ʿālamīn &lpar;311&rpar;</a> <span style='color:gray;'>(Sat Aug 09 2025 1:44 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2025/08/al-sarsari-sayings.html'>Al-Ṣarṣarī sayings</a> <span style='color:gray;'>(Tue Aug 05 2025 7:44 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2025/08/blog-post.html'>Shaykh&#39;s statement explained</a> <span style='color:gray;'>(Tue Aug 05 2025 7:43 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2025/08/adabmanners.html'>Adab&lpar;manners&rpar;</a> <span style='color:gray;'>(Tue Aug 05 2025 7:41 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2025/08/page-494-volume-1.html'>Book of insight</a> <span style='color:gray;'>(Tue Aug 05 2025 7:39 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2024/11/hashashin-assassins-from-ismaili-sect.html'>Hashashins</a> <span style='color:gray;'>(Thu Nov 28 2024 10:19 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2024/11/difference-between-akbar-and-sultan.html'>Difference between Akbar and Sultan Aurangzeb</a> <span style='color:gray;'>(Thu Nov 28 2024 2:10 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2024/11/the-miraculous-verses-of-holy-quran-for.html'>The Miraculous Verses of the Holy Quran, for which even contemporary &lpar;Modern&rpar; science cannot offer an explanation for.</a> <span style='color:gray;'>(Mon Nov 25 2024 12:13 AM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2024/11/saying-of-imam-shafi-rh.html'>Saying of Imam Shafi &lpar;rh&rpar;</a> <span style='color:gray;'>(Fri Nov 22 2024 10:54 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2024/11/surah-al-imran-59-verse.html'>Surah Al-Imran: 59, the verse</a> <span style='color:gray;'>(Tue Nov 19 2024 9:47 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2024/11/the-holy-quran-and-modern-science.html'>The Holy Quran and Modern Science:</a> <span style='color:gray;'>(Sat Nov 16 2024 11:52 AM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2024/11/the-virtues-of-winter.html'>The virtues of winter</a> <span style='color:gray;'>(Tue Nov 05 2024 12:34 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2024/11/imam-ibn-al-qayyim-rh-in-zaad-al-maad.html'>Imam Ibn Al Qayyim &lpar;rh&rpar; in Zaad Al Maad &lpar;/222&rpar;</a> <span style='color:gray;'>(Sat Nov 02 2024 9:40 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2024/11/ahadith-on-virtues-of-sending-salawat.html'>Ahadith on the Virtues of Sending Salawat upon the Prophet &lpar;S&rpar; on Friday.</a> <span style='color:gray;'>(Sat Nov 02 2024 1:34 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2024/11/a-list-of-violent-verses-from-bible.html'>A List of Violent Verses from The Bible</a> <span style='color:gray;'>(Fri Nov 01 2024 12:21 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/virtues-of-sayyiduna-umar-bin-khattab-ra.html'>Virtues of Sayyiduna Umar Bin Khattab &lpar;RA&rpar;</a> <span style='color:gray;'>(Tue Oct 29 2024 10:23 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/the-legend-of-mount-qaf-from-sources.html'>The legend of Mount Qaf &lpar;قاف&rpar; From the sources:</a> <span style='color:gray;'>(Tue Oct 29 2024 1:50 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/how-to-pray-salah.html'>How to pray Salah?</a> <span style='color:gray;'>(Fri Oct 25 2024 7:22 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/abu-jahl-loser.html'>Abu Jahl the loser</a> <span style='color:gray;'>(Thu Oct 24 2024 1:52 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/al-mawahib-al-ladinniyya-imam-ibrahim.html'>“al-Mawāhib al-Ladinnīyyaħ”, ʾImām ʾIbrāhīm al-Bājūrī ash-Shāfiʿī does Tawassul through the rank of the Prophet ﷺ for his closing Duʿāʾ.</a> <span style='color:gray;'>(Sat Oct 19 2024 7:32 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/the-prophecy-of-prophet-daniel-as.html'>The Prophecy of Prophet Daniel &lpar;AS&rpar; explanation from the Bible of the ending of the 4 kingdoms and a Solid state replacing them</a> <span style='color:gray;'>(Sat Oct 19 2024 6:23 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/imam-nawawi-rh-on-muslim-2674-hadith-in.html'>Imam An Nawawi &lpar;rh&rpar; on Muslim 2674 Hadith in the Sharh Sahih Muslim &lpar;vol:16/228&rpar;</a> <span style='color:gray;'>(Thu Oct 17 2024 9:28 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/mulla-ali-qaria-commentary-of-shifa.html'>Mulla Ali Qari’a commentary of the Shifa</a> <span style='color:gray;'>(Tue Oct 15 2024 6:30 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/prophet-will-be-witness-for-ummah.html'>Prophet ﷺ will be a witness for the Ummah</a> <span style='color:gray;'>(Tue Oct 15 2024 2:34 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/good-innovation-and-bad-innovation-from.html'>Good Innovation and Bad Innovation from the views of Traditional and the Greatest Scholars of Islam and Evidence from the Text:</a> <span style='color:gray;'>(Mon Oct 14 2024 2:59 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/ayats-that-are-about-polytheists-but.html'>Ayats that are about Polytheists but are used against the wrong people</a> <span style='color:gray;'>(Mon Oct 14 2024 2:52 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/salawat.html'>Salawat تنجينا:</a> <span style='color:gray;'>(Sun Oct 13 2024 12:01 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/imam-al-razi-in-his-tafsir-al-kabir.html'>Imam Al Razi in his Tafsir Al Kabir about the Hand of Allah &lpar;SWT&rpar;</a> <span style='color:gray;'>(Sat Oct 12 2024 10:38 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/the-reality-of-belief-about-world-being.html'>The Reality of the Belief about the World being created for Rasool Allah &lpar;SAW&rpar; 💚</a> <span style='color:gray;'>(Sat Oct 12 2024 7:18 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/a-thing-you-wont-be-asked-about-in.html'>A thing you won&#39;t be asked about in grave - story!</a> <span style='color:gray;'>(Fri Oct 11 2024 10:14 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/biographies-of-chain-of-narrators-of.html'>[Biographies of the chain of narrators of the hadith &lpar;Our Lord, God whose name is in heaven, sanctified is your name&rpar;] &lpar;3982 of Abi Dawud&rpar;</a> <span style='color:gray;'>(Fri Oct 11 2024 12:19 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/the-miracle-of-holy-prophet.html'>The Miracle of the Holy Prophet ﷺ</a> <span style='color:gray;'>(Thu Oct 10 2024 11:39 AM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/explaining-good-and-bad-bidah.html'>Explaining good and bad Bidah</a> <span style='color:gray;'>(Wed Oct 09 2024 9:49 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/explanation-of-verse-of-al-fatiha.html'>Explanation of the Verse of Al Fatiha.</a> <span style='color:gray;'>(Wed Oct 09 2024 8:32 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/explaining-what-is-shirk-and-is.html'>Explaining what is Shirk and is Istighatha Shirk ?</a> <span style='color:gray;'>(Wed Oct 09 2024 8:17 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/what-is-faithwhat-power-does-faith.html'>What is Faith?What Power does Faith holds? The Weapon of the People of Faith is Dua &lpar;Supplication&rpar;. And What is Divine Decree ?&lpar;qadr&rpar;</a> <span style='color:gray;'>(Wed Oct 09 2024 11:30 AM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/good-reward-for-even-planting-crop-or.html'>Good reward for even planting a crop or a plant which will benefit the creation:</a> <span style='color:gray;'>(Wed Oct 09 2024 11:03 AM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/explaining-that-rasool-allah-is-still.html'>Explaining that Rasool Allah ﷺ is still alive</a> <span style='color:gray;'>(Tue Oct 08 2024 9:02 PM)</span></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/the-reality-of-belief-of-prophet-saw.html'>The Reality of the Belief of the Prophet &lpar;SAW&rpar;&#39; Noor &lpar;Light&rpar; being created before the Pen and everything else:</a> <span style='color:gray;'>(Tue Oct 08 2024 11:31 AM)</span></li><!-- BLOG-POST-LIST:END -->
+<div id="outer-wrapper">
+  <!-- Styled header area mapping title fields -->
+  <header id="header-wrapper">
+    <h1>Ahlu-Sunnah Al Islam</h1>
+    <p>Spreading the truth. Authentic Islamic knowledge based on Quran and Sunnah.</p>
+  </header>
+
+  <!-- Centered standalone project navigation layout link paths -->
+  <nav id="header-navigation">
+    <ul>
+      <li><a href="https://blogspot.com">Blogger Home</a></li>
+      <li><a href="https://blogspot.comp/welcome-to-blog.html">About</a></li>
+      <li><a href="https://blogspot.comp/documents.html">Documents</a></li>
+      <li><a href="https://blogspot.comp/media.html">Media</a></li>
+    </ul>
+  </nav>
+
+  <div id="content-wrapper">
+    <section id="main-wrapper">
+      <!-- Target automation injection anchor block -->
+      <ul class="blog-posts">
+<!-- BLOG-POST-LIST:START -->
+<!-- BLOG-POST-LIST:END -->
+      </ul>
+    </section>
+  </div>
+
+  <footer id="footer-wrapper">
+    <p>© 2024–2026 <strong>Ahlu Sunnah Al Islam</strong>. All rights reserved.</p>
+  </footer>
+</div>
+
+<script>
+  // Active reading horizontal bar function matching footer actions
+  window.addEventListener('scroll', function() {
+    var doc = document.documentElement;
+    var sc = (doc.scrollTop / (doc.scrollHeight - doc.clientHeight)) * 100;
+    document.getElementById('readProgress').style.width = sc + '%';
+  }, {passive: true});
+</script>
 
 </body>
 </html>
