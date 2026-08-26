@@ -18,4 +18,4 @@ jobs:
           feed_list: "https://alsunnahalislam.blogspot.com/atom.xml?redirect=false&start-index=1&max-results=9999"
           readme_path: "index.html"
           max_post_count: 60
-          template: "<li><a href='$url'>$title</a> <span style='color:gray;'>($date)</span></li>"
+         
