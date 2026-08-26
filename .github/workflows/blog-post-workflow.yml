@@ -15,7 +15,7 @@ jobs:
       - name: Fetch RSS Feed
         uses: gautamkrishnar/blog-post-workflow@master
         with:
-          feed_list: "https://alsunnahalislam.blogspot.com/feeds/pages/default"
+          feed_list: "https://alsunnahalislam.blogspot.com/feeds/posts/default"
           readme_path: "index.html"
           max_post_count: 10
          
