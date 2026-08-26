@@ -11,11 +11,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        
-- name: Fetch RSS Feed
-  uses: gautamkrishnar/blog-post-workflow@master
-  with:
-    feed_list: "https://alsunnahalislam.blogspot.com/feeds/posts/default"
-    readme_path: "index.html"
-    max_post_count: 10
-  continue-on-error: true
+
+      - name: Fetch RSS Feed
+        uses: gautamkrishnar/blog-post-workflow@master
+        with:
+          feed_list: "https://alsunnahalislam.blogspot.com/feeds/posts/default?alt=rss"
+          readme_path: "index.html"
+          max_post_count: 10
+          template: "<li><a href='$url'>$title</a> <span style='color:gray;'>($date)</span></li>"
