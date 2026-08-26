@@ -15,5 +15,5 @@ jobs:
         uses: gautamkrishnar/blog-post-workflow@master
         with:
           feed_list: "https://alsunnahalislam.blogspot.com/feeds/posts/default?alt=rss"
-          readme_path: "./index.html"
+          readme_path: "index.html"
           max_post_count: 10
