@@ -4,146 +4,163 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ahlu-Sunnah Al Islam</title>
-  
-  <!-- Font assets matching your live blog template -->
   <link href="https://googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://gstatic.com" rel="preconnect"/>
   <link href="https://googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet"/>
 
   <style>
+    /* Exact Blogger global color parameters */
     :root {
       --g900: #0d2818;
       --g700: #145a32;
       --g600: #1a6e3b;
       --g500: #1e8449;
       --g100: #d5f5e3;
-      --g50: #eafaf1;
-      --g25: #f6fcf7;
+      --g50:  #eafaf1;
+      --g25:  #f6fcf7;
       --gold: #c8a951;
       --text: #1b2e1f;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: var(--g25); color: var(--text); font-family: 'Tajawal', sans-serif; font-size: 16px; line-height: 1.7; position: relative; }
-    a { color: var(--g700); text-decoration: none; font-weight: 600; }
-    
-    #readProgress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--g700), var(--gold)); width: 0%; z-index: 9999; }
+    body { background: var(--g25); color: var(--text); font-family: 'Tajawal', sans-serif; font-size: 17px; line-height: 1.8; }
+    a { color: var(--g700); font-weight: 600; text-decoration: none; }
+    img { max-width: 100%; height: auto; border-radius: 10px; }
 
-    #outer-wrapper { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+    #readProgress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--g700), var(--gold)); width: 0%; z-index: 9999; transition: width .08s linear; }
     
-    /* Elegant Header Match */
-    #header-wrapper { text-align: center; padding: 40px 20px 20px 20px; }
-    #header-wrapper h1 { font-family: 'Amiri', serif; font-size: 42px; color: var(--g700); font-weight: 700; margin-bottom: 5px; }
-    #header-wrapper p { color: #555; font-size: 15px; font-weight: 400; text-transform: uppercase; letter-spacing: 1px; }
-
-    /* Top Navigation Desktop Bar */
-    #header-navigation { background: #fff; border: 1px solid var(--g100); border-radius: 50px; margin-bottom: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
-    #header-navigation ul { list-style: none; display: flex; justify-content: center; align-items: center; padding: 5px; }
-    #header-navigation li a { color: var(--g900); padding: 10px 22px; font-size: 16px; font-weight: 500; border-radius: 30px; display: block; transition: all 0.2s; }
-    #header-navigation li a:hover { background: var(--g50); color: var(--g700); }
+    #outer-wrapper { background: #fff; width: 95%; max-width: 1150px; margin: 24px auto; border-radius: 18px; border: 1px solid var(--g100); overflow: hidden; }
     
-    /* Mobile Menu Toggle Button UI */
-    .menu-toggle { display: none; background: #fff; border: 1px solid var(--g100); padding: 10px 16px; border-radius: 30px; font-size: 20px; cursor: pointer; color: var(--g700); font-weight: bold; margin-bottom: 20px; justify-content: space-between; align-items: center; }
+    /* Exact layout alignment for your main logo header background color configuration */
+    #header-wrapper { background: linear-gradient(180deg, var(--g700), var(--g600)); color: #fff; text-align: center; padding: 28px 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; border-bottom: 4px solid var(--gold); }
+    #header-logo { margin: 0 auto 10px; max-width: 185px; display: block; border-radius: 50%; border: 3px solid var(--gold); background: transparent; }
+    .titlewrapper h1 { font-family: 'Amiri', serif; font-size: 36px; color: #fff; font-weight: 700; }
+    .descriptionwrapper p { color: #d5f5e3; font-size: 15px; }
 
-    /* Core Two-Column Dynamic Split */
-    #content-wrapper { display: flex; gap: 25px; margin-bottom: 40px; align-items: flex-start; }
-    #main-wrapper { flex: 3; width: 0; }
-    #sidebar-wrapper { flex: 1; min-width: 320px; position: sticky; top: 20px; display: flex; flex-direction: column; gap: 25px; }
+    #search-top-wrapper { background: rgba(255,255,255,0.98); padding: 12px 18px; border-bottom: 1px solid var(--g100); position: sticky; top: 0; z-index: 50; backdrop-filter: blur(8px); }
+    .search-box-table { width: 100%; border-collapse: collapse; }
+    .search-input-td { width: 100%; }
+    .search-input-td input { width: 100%; padding: 12px 16px; border: 1px solid var(--g100); border-radius: 30px 0 0 30px; background: #f9fefb; outline: none; font-family: 'Tajawal', sans-serif; font-size: 15px; }
+    .search-btn-td input { background: var(--g700); color: #fff; border: none; padding: 12px 22px; border-radius: 0 30px 30px 0; font-weight: 700; cursor: pointer; font-family: 'Tajawal', sans-serif; font-size: 15px; }
 
-    /* Post Card Formatting Rules matching your layout */
-    .blog-posts { display: flex; flex-direction: column; gap: 25px; list-style: none; }
-    .blog-posts li { background: #fff; border-radius: 16px; padding: 28px; border: 1px solid rgba(20,90,50,0.08); box-shadow: 0 4px 20px rgba(0,0,0,0.02); transition: transform 0.2s; }
-    .blog-posts li:hover { transform: translateY(-2px); }
+    #header-navigation { background: #fff; border-bottom: 1px solid var(--g100); position: sticky; top: 48px; z-index: 49; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    #header-navigation ul { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; gap: 6px; padding: 10px; max-width: 1100px; margin: 0 auto; }
+    #header-navigation li { font-family: 'Amiri', serif; font-weight: 700; font-size: 18px; }
+    #header-navigation li a { color: var(--g900); padding: 12px 20px; border-radius: 30px; display: block; }
+    #header-navigation li:hover a { background: var(--g700); color: #fff; }
+
+    #content-wrapper { padding: 22px; display: flex; gap: 22px; align-items: flex-start; }
+    #main-wrapper { width: 68%; } 
+    #sidebar-wrapper { width: 32%; position: sticky; top: 108px; display: flex; flex-direction: column; gap: 20px; }
+
+    .sidebar-widget-card { background: #ffffff; border: 1px solid var(--g100); border-radius: 12px; padding: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+    .sidebar-widget-card h2 { background: linear-gradient(90deg, var(--g700), var(--g500)); font-family: 'Amiri', serif; color: #fff; padding: 12px; border-radius: 10px; text-align: center; margin-bottom: 15px; font-size: 20px; }
+
+    /* Exact Blogger article text containers matching your layout schema configuration rules */
+    .blog-posts { display: flex; flex-direction: column; gap: 0; width: 100%; }
+    .post-outer { background: #ffffff; border: 5px solid var(--g700); border-radius: 14px; margin: 0 0 18px 0; padding: 18px 20px; box-shadow: 0 4px 18px rgba(20,90,50,0.08); position: relative; }
+    h3.post-title { font-family: 'Amiri', serif; font-size: 24px; text-align: center; margin-bottom: 12px; }
+    h3.post-title a { color: var(--g700); font-weight: bold; }
+    .post-body { max-width: 760px; margin: 12px auto 0; line-height: 1.9; color: var(--g700); }
+    .home-snippet { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; min-height: 108px; font-size: 16px; color: #333; }
     
-    /* Typography Overrides inside generated content */
-    .blog-posts li a { font-family: 'Amiri', serif; color: var(--g900) !important; font-size: 26px; font-weight: 700; line-height: 1.4; display: block; margin-bottom: 12px; }
-    .blog-posts li a:hover { color: var(--g700) !important; }
-    
-    /* Custom Sidebar Card Widgets */
-    .widget { background: #fff; border-radius: 16px; padding: 22px; border: 1px solid rgba(20,90,50,0.06); box-shadow: 0 4px 15px rgba(0,0,0,0.01); }
-    .widget h2 { font-size: 18px; color: var(--g700); border-bottom: 2px solid var(--g50); padding-bottom: 8px; margin-bottom: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
-    .widget ul { list-style: none; padding: 0; }
-    .widget li { margin-bottom: 10px; font-size: 15px; padding-bottom: 10px; border-bottom: 1px dashed var(--g50); }
-    .widget li:last-child { margin-bottom: 0; padding-bottom: 0; border: none; }
-    
-    /* Search Input Match */
-    .search-form { display: flex; width: 100%; margin-top: 5px; }
-    .search-input { width: 100%; padding: 10px 14px; border: 1px solid var(--g100); border-radius: 8px 0 0 8px; outline: none; font-family: 'Tajawal', sans-serif; font-size: 14px; }
-    .search-submit { background: var(--g700); color: #fff; border: none; padding: 0 16px; border-radius: 0 8px 8px 0; font-weight: 600; cursor: pointer; }
+    /* Exact matching styling parameter rules for your bottom green pill navigation paths button element selection rules */
+    .read-more { display: inline-block; margin-top: 15px; background: var(--g700); color: #fff !important; padding: 8px 24px; border-radius: 20px; font-size: 14px; font-weight: bold; text-align: center; box-shadow: 0 2px 6px rgba(20,90,50,0.2); }
+    .read-more:hover { background: var(--g900); }
 
-    /* Footer Container */
-    #footer-wrapper { background: #fff; border-top: 1px solid var(--g100); padding: 30px 20px; text-align: center; font-size: 14px; color: #666; margin-top: 40px; border-radius: 16px 16px 0 0; }
-    #footer-wrapper strong { color: var(--g700); }
+    .archive-list { list-style: none; padding-left: 5px; font-size: 15px; }
+    .archive-year { font-weight: bold; color: var(--g700); margin-top: 8px; display: block; }
+    .archive-month { padding-left: 12px; display: block; color: #555; font-size: 14px; margin: 4px 0; }
 
-    /* Responsive Breaks for Small Screens & Mobile Sidebars */
-    @media screen and (max-width: 900px) {
-      #content-wrapper { flex-direction: column; gap: 25px; }
-      #sidebar-wrapper { width: 100%; position: relative; top: 0; }
-      #header-navigation { display: none; }
-      .menu-toggle { display: flex; }
-      
-      /* Mobile Slide-Out Panel Menu */
-      #header-navigation.active { display: block; position: fixed; top: 0; left: 0; width: 280px; height: 100%; background: #fff; z-index: 10000; box-shadow: 5px 0 25px rgba(0,0,0,0.15); padding: 20px; border-radius: 0; animation: slideIn 0.3s ease forwards; }
-      #header-navigation.active ul { flex-direction: column; align-items: flex-start; }
-      #header-navigation.active li { width: 100%; }
-      #header-navigation.active li a { width: 100%; padding: 12px 15px; }
+    #footer-wrapper { background: var(--g700); color: #cfe9d6; padding: 25px; text-align: center; font-size: 14px; border-top: 4px solid var(--gold); }
+    #footer-wrapper strong { color: #fff; }
+
+    /* Clean mobile display breakpoint configurations */
+    @media screen and (max-width: 768px) {
+      #content-wrapper { flex-direction: column; } 
+      #main-wrapper, #sidebar-wrapper { width: 100%; position: relative; top: 0; }
+      #header-navigation ul { flex-direction: column; text-align: center; padding: 5px; }
+      #header-navigation li a { padding: 8px 12px; }
+      .titlewrapper h1 { font-size: 28px; }
     }
-    @keyframes slideIn { from { transform: translateX(-100%); } to { transform: translateX(0); } }
-    
-    /* Background screen dimming when mobile menu is active */
-    .nav-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 9998; }
-    .nav-overlay.active { display: block; }
   </style>
 </head>
 <body>
 
 <div id="readProgress"></div>
-<div class="nav-overlay" id="navOverlay"></div>
 
 <div id="outer-wrapper">
   
   <header id="header-wrapper">
-    <h1>Ahlu-Sunnah Al Islam</h1>
-    <p>Spreading the truth. Authentic Islamic knowledge based on Quran and Sunnah.</p>
+    <div id="header-inner">
+      <!-- Your live icon branding graphic matching your assets definition configuration link parameters -->
+      <img id="header-logo" src="https://googleusercontent.com" alt="Ahlu-Sunnah Al Islam Logo"/>
+      <div class="titlewrapper"><h1>Ahlu-Sunnah Al Islam</h1></div>
+      <div class="descriptionwrapper"><p>Spreading the truth.</p></div>
+    </div>
   </header>
 
-  <!-- Mobile Trigger Layout Component -->
-  <div class="menu-toggle" id="menuToggle">
-    <span>☰ Menu</span>
-    <span style="font-size: 14px; color: #aaa;">Ahlu-Sunnah Al Islam</span>
+  <div id="search-top-wrapper">
+    <form action="https://blogspot.com" method="get">
+      <table class="search-box-table">
+        <tr>
+          <td class="search-input-td">
+            <input name="q" placeholder="Search this blog..." type="text" required/>
+          </td>
+          <td class="search-submit-td">
+            <input type="submit" value="Search"/>
+          </td>
+        </tr>
+      </table>
+    </form>
   </div>
 
   <nav id="header-navigation">
     <ul>
-      <li><a href="https://alsunnahalislam.blogspot.com/">Home</a></li>
-      <li><a href="https://alsunnahalislam.blogspot.com/p/welcome-to-blog.html">About</a></li>
-      <li><a href="https://alsunnahalislam.blogspot.com/p/documents.html">Documents</a></li>
+      <li><a href="https://alsunnahalislam.blogspot.com">Home</a></li>
+      <li><a href="https://blogspot.com">About</a></li>
+      <li><a href="https://alsunnahalislam.blogspot.com/p/welcome-to-blog.html">Documents</a></li>
       <li><a href="https://alsunnahalislam.blogspot.com/p/media.html">Media</a></li>
+      <li><a href="https://alsunnahalislam.blogspot.com/p/privacy-policy.html">Privacy</a></li>
+      <li><a href="https://alsunnahalislam.blogspot.com/p/terms-conditions.html">Terms</a></li>
     </ul>
   </nav>
 
   <div id="content-wrapper">
-    <!-- Main Left Column Feed Box Container -->
     <main id="main-wrapper">
-      <ul class="blog-posts">
-<!-- BLOG-POST-LIST:START --><li><a href='https://alsunnahalislam.blogspot.com/2026/08/the-story-of-musa-and-al-khidr-limits.html'>The Story of Mūsā AS and al-Khiḍr</a></li><li><a href='https://alsunnahalislam.blogspot.com/2026/05/anti-ibn-taymiyyah-scans.html'>Anti ibn Taymiyyah scans</a></li><li><a href='https://alsunnahalislam.blogspot.com/2026/03/regarding-murshids.html'>Regarding Murshids</a></li><li><a href='https://alsunnahalislam.blogspot.com/2026/03/quran-1648-and-modern-science.html'>Qur’an 16:48 and Modern Science</a></li><li><a href='https://alsunnahalislam.blogspot.com/2026/03/explanation-of-free-will.html'>Explanation of free will</a></li><li><a href='https://alsunnahalislam.blogspot.com/2026/02/refutation-of-shia-belief.html'>Refutation of Shia Belief</a></li><li><a href='https://alsunnahalislam.blogspot.com/2025/12/question-and-answer-regarding-something.html'>Question and answer regarding something</a></li><li><a href='https://alsunnahalislam.blogspot.com/2025/12/importance-of-murshid.html'>Importance of murshid</a></li><li><a href='https://alsunnahalislam.blogspot.com/2025/12/people-who-dont-have-murshid.html'>People who don&#39;t have murshid</a></li><li><a href='https://alsunnahalislam.blogspot.com/2025/12/sultan-al-hind.html'>Sultan Al Hind</a></li><li><a href='https://alsunnahalislam.blogspot.com/2025/10/explaining-slave-girl-hadith.html'>Explaining the slave girl hadith</a></li><li><a href='https://alsunnahalislam.blogspot.com/2025/10/regarding-hadith-that-isa-as-will-go-to.html'>Regarding the hadith that Isa AS will go to the grave of Prophet Muhammad ﷺ</a></li><li><a href='https://alsunnahalislam.blogspot.com/2025/10/dont-mention-prophet-by-his-name-alone.html'>Don&#39;t mention Prophet ﷺ by his name alone.</a></li><li><a href='https://alsunnahalislam.blogspot.com/2025/10/the-definition-of-fitrah-is-fitrah-islam.html'>The Definition of Fiṭrah. Is Fiṭrah Islam?</a></li><li><a href='https://alsunnahalislam.blogspot.com/2025/08/tawassulistighatha-evidences_24.html'>Tawassul/Istighatha evidences</a></li><li><a href='https://alsunnahalislam.blogspot.com/2025/08/saying-of-imam-abu-shama.html'>Saying of Imam Abu Shama</a></li><li><a href='https://alsunnahalislam.blogspot.com/2025/08/saying-of-ibn-abidinrh.html'>Saying of Ibn Abidin&lpar;rh&rpar;</a></li><li><a href='https://alsunnahalislam.blogspot.com/2025/08/fadail-sayyidat-al-nisa-al-alamin.html'>Fadail Sayyidat Al Nisa Al Alamin Fatima Zahra &lpar;SA&rpar;</a></li><li><a href='https://alsunnahalislam.blogspot.com/2025/08/ilam-al-muwaqqiin-rabb-al-alamin-311.html'>Iʿlām al-muwaqqiʿīn ʿan rabb al-ʿālamīn &lpar;311&rpar;</a></li><li><a href='https://alsunnahalislam.blogspot.com/2025/08/al-sarsari-sayings.html'>Al-Ṣarṣarī sayings</a></li><li><a href='https://alsunnahalislam.blogspot.com/2025/08/blog-post.html'>Shaykh&#39;s statement explained</a></li><li><a href='https://alsunnahalislam.blogspot.com/2025/08/adabmanners.html'>Adab&lpar;manners&rpar;</a></li><li><a href='https://alsunnahalislam.blogspot.com/2025/08/page-494-volume-1.html'>Book of insight</a></li><li><a href='https://alsunnahalislam.blogspot.com/2024/11/hashashin-assassins-from-ismaili-sect.html'>Hashashins</a></li><li><a href='https://alsunnahalislam.blogspot.com/2024/11/difference-between-akbar-and-sultan.html'>Difference between Akbar and Sultan Aurangzeb</a></li><li><a href='https://alsunnahalislam.blogspot.com/2024/11/the-miraculous-verses-of-holy-quran-for.html'>The Miraculous Verses of the Holy Quran, for which even contemporary &lpar;Modern&rpar; science cannot offer an explanation for.</a></li><li><a href='https://alsunnahalislam.blogspot.com/2024/11/saying-of-imam-shafi-rh.html'>Saying of Imam Shafi &lpar;rh&rpar;</a></li><li><a href='https://alsunnahalislam.blogspot.com/2024/11/surah-al-imran-59-verse.html'>Surah Al-Imran: 59, the verse</a></li><li><a href='https://alsunnahalislam.blogspot.com/2024/11/the-holy-quran-and-modern-science.html'>The Holy Quran and Modern Science:</a></li><li><a href='https://alsunnahalislam.blogspot.com/2024/11/the-virtues-of-winter.html'>The virtues of winter</a></li><li><a href='https://alsunnahalislam.blogspot.com/2024/11/imam-ibn-al-qayyim-rh-in-zaad-al-maad.html'>Imam Ibn Al Qayyim &lpar;rh&rpar; in Zaad Al Maad &lpar;/222&rpar;</a></li><li><a href='https://alsunnahalislam.blogspot.com/2024/11/ahadith-on-virtues-of-sending-salawat.html'>Ahadith on the Virtues of Sending Salawat upon the Prophet &lpar;S&rpar; on Friday.</a></li><li><a href='https://alsunnahalislam.blogspot.com/2024/11/a-list-of-violent-verses-from-bible.html'>A List of Violent Verses from The Bible</a></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/virtues-of-sayyiduna-umar-bin-khattab-ra.html'>Virtues of Sayyiduna Umar Bin Khattab &lpar;RA&rpar;</a></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/the-legend-of-mount-qaf-from-sources.html'>The legend of Mount Qaf &lpar;قاف&rpar; From the sources:</a></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/how-to-pray-salah.html'>How to pray Salah?</a></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/abu-jahl-loser.html'>Abu Jahl the loser</a></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/al-mawahib-al-ladinniyya-imam-ibrahim.html'>“al-Mawāhib al-Ladinnīyyaħ”, ʾImām ʾIbrāhīm al-Bājūrī ash-Shāfiʿī does Tawassul through the rank of the Prophet ﷺ for his closing Duʿāʾ.</a></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/the-prophecy-of-prophet-daniel-as.html'>The Prophecy of Prophet Daniel &lpar;AS&rpar; explanation from the Bible of the ending of the 4 kingdoms and a Solid state replacing them</a></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/imam-nawawi-rh-on-muslim-2674-hadith-in.html'>Imam An Nawawi &lpar;rh&rpar; on Muslim 2674 Hadith in the Sharh Sahih Muslim &lpar;vol:16/228&rpar;</a></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/mulla-ali-qaria-commentary-of-shifa.html'>Mulla Ali Qari’a commentary of the Shifa</a></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/prophet-will-be-witness-for-ummah.html'>Prophet ﷺ will be a witness for the Ummah</a></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/good-innovation-and-bad-innovation-from.html'>Good Innovation and Bad Innovation from the views of Traditional and the Greatest Scholars of Islam and Evidence from the Text:</a></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/ayats-that-are-about-polytheists-but.html'>Ayats that are about Polytheists but are used against the wrong people</a></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/salawat.html'>Salawat تنجينا:</a></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/imam-al-razi-in-his-tafsir-al-kabir.html'>Imam Al Razi in his Tafsir Al Kabir about the Hand of Allah &lpar;SWT&rpar;</a></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/the-reality-of-belief-about-world-being.html'>The Reality of the Belief about the World being created for Rasool Allah &lpar;SAW&rpar; 💚</a></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/a-thing-you-wont-be-asked-about-in.html'>A thing you won&#39;t be asked about in grave - story!</a></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/biographies-of-chain-of-narrators-of.html'>[Biographies of the chain of narrators of the hadith &lpar;Our Lord, God whose name is in heaven, sanctified is your name&rpar;] &lpar;3982 of Abi Dawud&rpar;</a></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/the-miracle-of-holy-prophet.html'>The Miracle of the Holy Prophet ﷺ</a></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/explaining-good-and-bad-bidah.html'>Explaining good and bad Bidah</a></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/explanation-of-verse-of-al-fatiha.html'>Explanation of the Verse of Al Fatiha.</a></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/explaining-what-is-shirk-and-is.html'>Explaining what is Shirk and is Istighatha Shirk ?</a></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/what-is-faithwhat-power-does-faith.html'>What is Faith?What Power does Faith holds? The Weapon of the People of Faith is Dua &lpar;Supplication&rpar;. And What is Divine Decree ?&lpar;qadr&rpar;</a></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/good-reward-for-even-planting-crop-or.html'>Good reward for even planting a crop or a plant which will benefit the creation:</a></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/explaining-that-rasool-allah-is-still.html'>Explaining that Rasool Allah ﷺ is still alive</a></li><li><a href='https://alsunnahalislam.blogspot.com/2024/10/the-reality-of-belief-of-prophet-saw.html'>The Reality of the Belief of the Prophet &lpar;SAW&rpar;&#39; Noor &lpar;Light&rpar; being created before the Pen and everything else:</a></li><!-- BLOG-POST-LIST:END -->
-      </ul>
+      <div class="blog-posts">
+<!-- BLOG-POST-LIST:START -->
+<!-- BLOG-POST-LIST:END -->
+      </div>
     </main>
 
-    <!-- Sticky Right Column Widget Box Layout -->
+    <!-- Sidebar widgets layer layout mimicking exactly your live layout blocks configuration columns elements -->
     <aside id="sidebar-wrapper">
       
-      <div class="widget">
-        <h2>Search</h2>
-        <form class="search-form" action="https://blogspot.com" method="get">
-          <input class="search-input" type="text" name="q" placeholder="Search this blog..." required />
-          <input class="search-submit" type="submit" value="Go" />
-        </form>
+      <div class="sidebar-widget-card">
+        <h2>Featured Post</h2>
+        <h3 style="font-family:'Amiri', serif; font-size:18px; margin-bottom:6px;"><a href="https://alsunnahalislam.blogspot.com/">Shaykh's statement explained</a></h3>
+        <p style="font-size:14px; color:#444; line-height:1.6;">Shaykh Al Islam Ibn Qudamah (RA) said: Only those who attribute God's attributes to the attributes of His creatures, in meaning, fall into...</p>
       </div>
 
-     
+      <div class="sidebar-widget-card">
+        <h2>Popular Posts</h2>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:10px; font-size:14px;">
+          <li><a href="https://alsunnahalislam.blogspot.com/">The Story of Mūsā AS and al-Khiḍr</a></li>
+          <li><a href="https://alsunnahalislam.blogspot.com/">Anti ibn Taymiyyah scans</a></li>
+          <li><a href="https://alsunnahalislam.blogspot.com/">Regarding Murshids</a></li>
+        </ul>
+      </div>
 
-      
+      <div class="sidebar-widget-card">
+        <h2>Blog Archive</h2>
+        <div class="archive-list">
+          <span class="archive-year">▼ 2026</span>
+          <span class="archive-month">▼ August (1)</span>
+          <span class="archive-month">► May (1)</span>
+          <span class="archive-month">► March (3)</span>
+        </div>
+      </div>
 
     </aside>
   </div>
@@ -154,28 +171,6 @@
 </div>
 
 <script>
-  // Mobile drawer control handlers
-  const toggleBtn = document.getElementById('menuToggle');
-  const navBar = document.getElementById('header-navigation');
-  const overlay = document.getElementById('navOverlay');
-
-  toggleBtn.addEventListener('click', () => {
-    navBar.classList.toggle('active');
-    overlay.classList.toggle('active');
-  });
-
-  overlay.addEventListener('click', () => {
-    navBar.classList.remove('active');
-    overlay.classList.remove('active');
-  });
-
-  // Top scrolling progress pipeline rule calculation
   window.addEventListener('scroll', function() {
     var doc = document.documentElement;
-    var sc = (doc.scrollTop / (doc.scrollHeight - doc.clientHeight)) * 100;
-    document.getElementById('readProgress').style.width = sc + '%';
-  }, {passive: true});
-</script>
-
-</body>
-</html>
+var sc = (doc.scrollTop / (doc.scrollHeight - doc.clientHeight)) * 100;document.getElementById('readProgress').style.width = sc + '%';}, {passive: true});
