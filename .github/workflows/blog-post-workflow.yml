@@ -15,7 +15,7 @@ jobs:
       - name: Fetch RSS Feed
         uses: gautamkrishnar/blog-post-workflow@master
         with:
-          feed_list: "https://blogspot.com"
+          feed_list: "https://alsunnahalislam.blogspot.com/atom.xml?redirect=false&start-index=1&max-results=9999"
           readme_path: "index.html"
           max_post_count: 10
           # This custom mapping formats posts into identical Blogger grid card frames
