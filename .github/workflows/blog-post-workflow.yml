@@ -1,8 +1,9 @@
 name: Sync Blogger Posts
 on:
   schedule:
-    - cron: '0 0 * * 0'  # Run once weekly instead of every 3 hours
+    - cron: '34 */3 * * *'
   workflow_dispatch:
+
 jobs:
   update_blog:
     name: Pull latest posts from Blogger
@@ -10,8 +11,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-     - name: Fetch RSS Feed
+        
+- name: Fetch RSS Feed
   uses: gautamkrishnar/blog-post-workflow@master
   with:
     feed_list: "https://alsunnahalislam.blogspot.com/feeds/posts/default"
