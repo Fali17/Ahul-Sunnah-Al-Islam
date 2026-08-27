@@ -1,4 +1,4 @@
-countname: Migrate Blogger Entries to Independent Files
+name: Migrate Blogger Entries to Independent Files
 on:
   schedule:
     - cron: '34 */3 * * *'
