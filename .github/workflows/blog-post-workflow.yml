@@ -1,35 +1,27 @@
-name: Sync Blogger Posts
+countname: Migrate Blogger Entries to Independent Files
 on:
   schedule:
     - cron: '34 */3 * * *'
   workflow_dispatch:
 
 jobs:
-  update_blog:
-    name: Pull latest posts from Blogger
+  convert_atom_to_markdown:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository Code
         uses: actions/checkout@v4
 
-      - name: Fetch RSS Feed
-        uses: gautamkrishnar/blog-post-workflow@master
+      - name: Process Feed and Generate Flat Files
+        uses: joshuamulder/rss-to-markdown@v1
         with:
-          feed_list: "https://alsunnahalislam.blogspot.com/atom.xml?redirect=false&start-index=1&max-results=9999"
-          readme_path: "index.html"
-          max_post_count: 10
-          # This custom mapping formats posts into identical Blogger grid card frames
+          # Your live 2026 Atom feed link mapping
+          feed_url: "https://alsunnahalislam.blogspot.com/atom.xml?redirect=false&start-index=1&max-results=9999"
+          output_dir: "./_posts"
+          file_extension: "md"
           template: |
-            <div class="post-outer">
-              <div class="post hentry">
-                <h3 class="post-title entry-title">
-                  <a href="$url">$title</a>
-                </h3>
-                <div class="post-body entry-content">
-                  <div class="home-snippet">$description</div>
-                  <div style="text-align:center">
-                    <a class="read-more" href="$url">Read more ...</a>
-                  </div>
-                </div>
-              </div>
-            </div>
+            ---
+            layout: post
+            title: "{{title}}"
+            date: {{date}}
+            ---
+            {{content}}
