@@ -2,6 +2,6 @@
 
 Spreading The Truth
 
-## Quick Navigation
-* [View the Entire Blog Feed](feed-(1).html)
-* [Access Islamic PDF Resources](Islamic---Resources-PDFs.html)
+### Navigation
+* [Entire Blog Feed](feed%20(1).html)
+* [Islamic PDF Resources](Islamic%20Resources%20-%20PDFs.html)
