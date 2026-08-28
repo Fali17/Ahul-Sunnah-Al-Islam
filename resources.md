@@ -21,7 +21,7 @@ Wahhabism Sect
 (https://drive.google.com/file/d/1B4lurIRq_49IP7uaiCNHdMcMFpxRxxYQ/preview)
 
 Al-Adhkar
-(https://drive.google.com/file/d/1obO5vzZRpYQlIwPPjlKjZBAvYcDJkoj5/preview)
+(https://drive.google.com/file/d/1obO5vzZRpYQlIwPPjlKjZBAvYcDJkoj5/view)
 
 ## Fadail Sayyidat Al Nisa Al Alamin Fatima Zahra (SA)
 
