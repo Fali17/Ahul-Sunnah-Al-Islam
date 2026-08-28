@@ -1,4 +1,4 @@
 # Welcome to My Blog
 
-* Entire Blog(post1.md)
+* Entire Blog(feed(1).md)
 * Resources(post2.md)
