@@ -3,5 +3,5 @@
 Spreading The Truth
 
 ### Navigation Menu
-* [Entire Blog](feed-1.html)
+* [Entire Blog](feed.html)
 * [Islamic PDF Resources](resources.html)
