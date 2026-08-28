@@ -731,6 +731,4 @@ Dr. William Campbell (Christian missionary and author of The Bible, the Quran, a
 Even the Christian Missionaries accepted that their Holy book has contradictions and the knowledge of their book with science is only limited to the time and science of that era whereas the Holy Quran was revealed in a place where no one knew Science much and is clearly divine and has proofs of being divine than the bible.
 
 And one thing that we do not need anyone's approval to claim to be the truth, our actions, our speech, our religion, when people will see the example of this religion in you then they will never need to verify it is the truth or not they will just accept it as the truth by just seeing you become the best example of your religion and they will be inspired by you so become Islam and don't just tell others about it show it to them by becoming it yourself become the real Muslims.
-## Documents
-Updated on: 2026-08-16T18:58:42.735Z
-Islamic Resources - PDFs | Ahlu-Sunnah Al Islam
+
