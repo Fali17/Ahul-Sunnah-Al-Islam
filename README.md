@@ -1,4 +1,7 @@
 # Welcome to My Blog
 
-* Entire Blog(feed(1).md)
-* Resources(Islamic Resources - PDFs.md)
+Spreading The Truth
+
+## Quick Navigation
+* [View the Entire Blog Feed](feed-(1).html)
+* [Access Islamic PDF Resources](Islamic-Resources---PDFs.html)
